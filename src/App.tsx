@@ -1,8 +1,19 @@
+import { useState, useEffect } from "react";
+import { lightTheme, darkTheme } from "./styles/themes";
+import { ThemeProvider } from "styled-components";
+import GlobalStyle from "./styles/global";
+import { Button } from "./components/atoms/Button";
+import Home from "./components/pages/Home";
+
 function App() {
+  const [isDarkModeEnabled, setIsDarkModeEnabled] = useState(true);
+  const theme = isDarkModeEnabled ? darkTheme : lightTheme;
+
   return (
-    <div>
-      <h1>App</h1>
-    </div>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <Home />
+    </ThemeProvider>
   );
 }
 
